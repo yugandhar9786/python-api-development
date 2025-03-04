@@ -1,6 +1,7 @@
 # to start with fastapi we need to import fastapi
 
 from fastapi import FastAPI
+from fastapi.params import Body
 
 app = FastAPI() #to create an instance of fastapi
 
@@ -19,3 +20,8 @@ def contact():
 @app.get("/blog")
 def blog():
     return {"message": "this page is about blogs"}
+
+@app.post("/create posts")
+def create_posts(payload: dict= Body(...)):
+    print(payload)
+    return {"message": "successfully created a post"}
